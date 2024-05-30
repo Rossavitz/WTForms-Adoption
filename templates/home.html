@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>All of the Pets!</h1>
+    <ol>
+        {% for pet in pets %}
+            <li>
+                <p class="petname">{{pet.name}}</p>
+                {% if pet.photo_url %}
+                <img src="{{pet.photo_url}}">
+                {% endif %}
+                {% if pet.available == True %}
+                <p id="available">AVAILABLE!</p>
+                {% else %}
+                <p>Has Been Adopted!</p>
+                {% endif %}
+                <a href="/{{pet.id}}" class="btn btn-danger btn-lg">Edit</a>
+            </li>
+            <br>
+            <br>
+            {% endfor %}  
+        </ol>
+
+    <a href="/add" class="btn btn-success btn-lg">Add New Pet</a>
+</body>
+</html>

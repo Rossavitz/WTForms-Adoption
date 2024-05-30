@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Pet Details</title>
+</head>
+<body>
+    <h1>Name:{{pet.name}}</h1>
+    <p>Age: {{pet.age}}</p>
+    <p>Notes: {{pet.notes}}</p>
+    <p>Species: {{pet.species}}</p>
+    {% if pet.photo_url %}
+    <img src="{{pet.photo_url}}">
+    {% endif %}
+    {% if pet.available == True %}
+    <p id="available">AVAILABLE!</p>
+    {% else %}
+    <p>Has Been Adopted!</p>
+    {% endif %}
+
+    <h2>Edit Pet</h2>
+        <form method="POST">
+        {{ form.hidden_tag() }}
+        {% for field in form if field.widget.input_type != 'hidden' %}
+            <p>
+                {{field.label}}
+                {{field}}
+    
+                {% for err in field.errors %}
+                {{err}}
+                {% endfor %}
+            </p>
+            {% endfor %}
+            <button>Save</button>
+        </form>
+</body>
+</html>

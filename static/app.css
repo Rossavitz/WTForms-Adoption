@@ -1,0 +1,12 @@
+img {
+    width: 200px;
+}
+
+#available {
+    font-weight: bolder;
+}
+
+.petname {
+    font-size: 2rem;
+    font-weight: bolder;
+}
